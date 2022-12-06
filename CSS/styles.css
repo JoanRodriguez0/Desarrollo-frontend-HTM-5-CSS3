@@ -1,0 +1,184 @@
+:root{
+    --blanco:#ffffff;
+    --oscuro:#212121;
+    --primario:rgba(255,193,7,1);
+    --secundario:#0097A7;
+    --gris:#757575;
+}
+html{
+    font-size: 62.5%;/*Se realiza el cambio general del tamaño en HTML para que se le de un uso mas adecuado de los rem y em*/
+    box-sizing: border-box; /*Este box-sizing es aplicado a todo el HTML para que el padding el border y el margin no afecten el widht es decir el tamño de la imagen que queremos */
+}
+*, *:before, *:after { /*El * solo significa que le apliquemos el box-sizing: inherit a todo el contenido HTML sin importar que. El before y after le estan diciendo que lo aplique antes y despues del texto es como un seudo elemento es decir que no existe en html pero si en css */
+    box-sizing: inherit;
+}
+body{
+    font-size: 16px;/*1rem =10px De esta manera los sitios web se van adapatar mas a una gran cantidad de navegadores*/
+    font-family: 'Old Standard TT', serif;
+    background-image: linear-gradient(to top, #dfe9f3 0%, var(--blanco) 100%);/*Esto realiza un degradado en todo la pagina el top significa que lo va hacer de abajo hacia arriba con un color beigh del 0% hasta el blanco de un 100% */
+}
+#tituloh{/*Esta es la forma para llamar a los IDS Los ids solo se deben usar una vez por mas que no nos marque error esa es la regla */
+    text-align: center;
+    color: var(--primario);
+    font-size: 3rem;
+    font-family: 'Times New Roman', serif; /* Este correspode a una libreria que se introduce en primera instancia en el HTML*/
+    font-weight:400; /* Este comando sirve para cambiar el grosor de la fuente*/
+}
+#tituloh span{ /*Si no se espesifica tituloh span editaria todos los span que hay en el codigo */
+    font-size: 6rem;
+
+}
+.titulo{/*Esta es la forma de cambiar las propiedades de las clases*/
+    text-align: center;
+    color: var(--blanco);
+    font-size: 3.8rem;
+
+}
+/*Clase contenedor creada en el mismo espacio que navegacion principal
+la usamos para centrar el texto que hay en NAV */
+.contenedor{
+    max-width: 120rem;/*El max permite que la pagina puede llegar maximo a 1200 px solamente si hay ese espacio disponible con ello si la pantalla se vuelve mas pequeña se reduciran tambien la cantidad de pixeles */
+   /* Una de las formas para centrar una navegacion es la siguiente
+     margin-top: 0; /*El margin top es la separacion que le doy desde la Navegacion y el titulo
+     margin-right: auto;
+     margin-bottom: 0;/*El margin bottom es la separacion que le doy desde la Navegacion y el titulo pero hacia abajo
+     margin-left: auto;
+   */
+    /*La segunda forma y la mas optima es la siguiente*/
+     margin:0 auto 0 auto;
+}
+/*Clase para cambiar el color del fonto generalmente de todo el espacio que conforma el NAV*/
+.nav-bg{
+    background-color:var(--secundario);
+}
+.Navegacion-principal{
+    /*padding: 1rem; -- Este comando funciona para extender o hacer un poco mas grande el elemento que estamos modificando en todas las direcciones*/
+    display: flex; /*Este comando nos permite cambiar el display que trae por defecto el elemento NAV a flexbox */
+    flex-direction: column;
+}
+@media (min-width: 768px) {
+    .Navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;/*Con este comando estariamos dandole espacios a cada texto que hay en el elemento NAV */
+    }
+}
+/*Clase para realizar el cambio de color y decoracion del texto descrito en el NAV*/
+.Navegacion-principal a{  
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;/*Comando para quitarle la subraya que trae por defecto el comando tambien se puede modificar de diferentes formas*/
+    font-size: 2rem;
+    padding: 1rem; /*El padding se cambia de lugar ya que css omite este padding si se coloca en ambos lados */
+}
+/*Seudo clase*/
+.Navegacion-principal a:hover{ /*Este comando hover es el que permite realizar el cambio de color cuando se pone el apuntador o el mouse sobre cada texto del NAV */
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+/*Ejemplos de como usar los media queries para hacer responsive nuestra pagina*/
+/*
+@media (min-width: 480px){  el min-width significa el tamaño de pantalla que debe tomar el sitio para que se ejecute lo que va haber en su interior
+    body{
+        background-color: blue;
+    }
+}
+@media (min-width: 768px){
+    body{
+        background-color:cornflowerblue;
+    }
+}
+*/
+.hero{
+    background-image: url(../img/hero.jpg);/*Este comando me permite poner la imagen de fondo sobra decir que los dos puntos son para acceder a otra carpeta*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    /*padding: 50px;/*Como se puede ver cuando se aplica el height(La altura de la imagen) y el padding aun asi va mantener un tamaño de 450px esto debido al comando box-sizing: border-box  del html y tambien al before y al after*/
+    /*Hay que quitar el padding ya que afecata al sombrear la imagende fondo solo es de ejemplo para evidenciar que no cambia el tamaño de la imagen */
+    position: relative;/*Si no se pone posicion relativa a la clase padre no se podra posicionar excatamente en un sitio determinado la clase hijo que en este caso seria contenido_hero*/ 
+    margin-bottom: 2rem;
+}
+.contenido-hero{
+    position: absolute; /*Al tener una posicion absoluta va a tener todo el contenido del padre a su disposicion para determinar a base de coordenadas la posicion exacta del contenido_hero*/
+    /*Una de las formas de poner las coordenadas*/
+    /* 
+    top: 0;
+    right: 0; --Al poner todas en 0 estamos aprovechando todo el espacio de la imagen y con eso la podemos poner sombreada
+    left: 0;
+    bottom: 0;
+    */
+    /*Otra forma mas optima*/
+    width: 100%;  /*Al poner el ancho y el alto al 100% estamos aprovechando todo el espacio de la imagen y con eso la podemos poner sombreada*/
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /*Aqui es donde se utiliza el A del rgba que es el nivel de transparencia solo se usa desde 0 a 1 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;  
+}
+.contenido-hero a, p{
+    text-decoration: none;
+    color: var(--blanco);
+}
+.Boton{
+    background-color: var(--secundario);
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    border-radius: .5rem;
+    width: 90%;
+}
+@media (min-width: 768px) {
+    .Boton{
+        width: auto;
+    }
+}
+.sombra{
+    -webkit-box-shadow: 0px 32px 20px 15px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 32px 20px 15px rgba(0,0,0,0.57);
+    box-shadow: 0px 32px 20px 15px rgba(0,0,0,0.57);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: .5rem;
+}
+@media (min-width: 768px) {
+    .servicios_tipos{
+        display: grid;
+        /*Ejemplo de como usar grid
+        grid-template-columns: 300px 300px;
+        grid-template-rows: 200px 800px;
+        grid: 200px 800px / 300px 300px ; --Esto es lo mismo que lo anterior 
+        grid-template-columns: 33.3% 33.3% 33.3%; division de columnas por porcentaje
+        grid-template-columns: 1fr 1fr 1fr; Es una fracion para cada columna 
+        grid-template-columns: repeat(3, 1fr); trs columnas de una fraccion
+        */
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem; /*Esta es la forma como separamos el contenido del encajonamiento que da css grid es como un padding para grid*/
+    }
+}
+.servicio {
+   display: flex;
+   flex-direction: column; 
+   align-items: center;
+}
+.servicio h3{
+ color: var(--secundario);
+ font-weight: normal;
+}
+.servicio p{
+    color: var(--oscuro);
+    line-height: 2rem; /*Este comando cambia el interlineado del parrafo */
+}
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
